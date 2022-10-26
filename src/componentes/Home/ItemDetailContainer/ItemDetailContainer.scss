@@ -1,0 +1,22 @@
+.ItemDetailContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.ItemDetailContainer2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    flex-direction: column;
+    box-shadow: rgba(4, 82, 94, 0.16) 0px 3px 6px, rgba(1, 55, 72, 0.23) 0px 3px 6px;
+    width: 25%;
+    padding: 20px;
+
+    .Item{
+        box-shadow: none;
+        width: 100%;
+    }
+}
