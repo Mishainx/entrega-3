@@ -7,8 +7,6 @@ import {data} from '../../../screens/Home/Products'
 const ItemListContainer = () => {
     const [productList, setProductList] = useState([]);
     const [loading, setLoading] = useState(true);
-    const {category} = useParams();
-    console.log(category)
 
     useEffect(() => {
       data
