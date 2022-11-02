@@ -30,7 +30,7 @@ function Cart(){
             </div>
             
             )}
-            <p>Su total es {`${totalAmount()}`}</p>
+            <p className='cartTotal'>Su total es {`${totalAmount()}`}</p>
             </div>
             
 
