@@ -18,10 +18,10 @@ function ItemDetailContainer(){
       setProduct(getProductById(id-1));
     }, []);
 
-    function getData(data){
+    function getData(data,subtotal){
         setItemCount(data)
       if(data>0){
-        addItem(product.id,product.name,product.price,data,product.img)}
+        addItem(product.id,product.name,product.price,data,product.img,subtotal)}
     }
 
 
