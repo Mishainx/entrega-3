@@ -1,19 +1,29 @@
 import '../ItemDetailContainer/ItemDetailContainer.scss'
 import { useParams } from "react-router-dom";
 import Item from "../Item/Item";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {getProductById} from '../../../screens/Home/Products'
 import ItemCount from '../ItemCount/ItemCount';
-import BuyButton from '../../BuyButton/BuyButton';
+import { CartContext } from '../../../context/CartContext';
+
 
 
 function ItemDetailContainer(){
     const {id} = useParams();
     const [product, setProduct] = useState({});
-
+    const [itemCount,setItemCount] = useState()
+    const {addItem} = useContext(CartContext)
+    
     useEffect(() => {
       setProduct(getProductById(id-1));
     }, []);
+
+    function getData(data){
+        setItemCount(data)
+      if(data>0){
+        addItem(product.id,product.name,product.price,data,product.img)}
+    }
+
 
     return (
       <div className="ItemDetailContainer">  
@@ -27,8 +37,7 @@ function ItemDetailContainer(){
          category={product.category}
          description={product.description} 
           />
-      <ItemCount/>
-      <BuyButton/>
+      <ItemCount getData={getData} stock={product.stock}/>
     </div>
  </div>
  );

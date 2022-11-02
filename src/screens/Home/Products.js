@@ -23,7 +23,7 @@ const Products = [
         description: "Tablero 9x9 líneas. Hecho en melamina",
         price: 1500,
         category: "tableros",
-        stock: 10,
+        stock: 0,
         img: "/img/kiai-tablero-9.png"
     },
     {

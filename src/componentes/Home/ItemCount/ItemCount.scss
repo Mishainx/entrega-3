@@ -2,6 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    .ItemCountContainer{
+        display: flex;
+    }
     
 }
 
@@ -22,4 +26,3 @@
     background: linear-gradient(125deg, rgb(67, 118, 143) 0%, rgb(24, 114, 161) 97%);
     }
   }
-

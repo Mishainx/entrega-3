@@ -1,0 +1,17 @@
+.ItemList {
+  display: flex;
+  padding-top: 0;
+  margin: 0;
+}
+.ItemList img {
+  width: 50px;
+}
+.ItemList .trash {
+  cursor: pointer;
+}
+
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}/*# sourceMappingURL=Cart.css.map */

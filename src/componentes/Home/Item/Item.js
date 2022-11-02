@@ -1,6 +1,6 @@
 import "./Item.scss";
 
-const Item = ({name,description,img,price,category,id}) => {
+const Item = ({name,description,img,price,category,id,stock}) => {
   return (
     <div className="Item"> 
      <div className="ImgContainer"><img src={img} /></div> 
