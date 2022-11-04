@@ -5,6 +5,7 @@ import { useState, useEffect, useContext } from "react";
 import {getProductById} from '../../../screens/Home/Products'
 import ItemCount from '../ItemCount/ItemCount';
 import { CartContext } from '../../../context/CartContext';
+import{collection,getDocs,getFirestore} from 'firebase/firestore';
 
 
 
@@ -15,7 +16,13 @@ function ItemDetailContainer(){
     const {addItem} = useContext(CartContext)
     
     useEffect(() => {
-      setProduct(getProductById(id-1));
+      const db = getFirestore();
+
+      const itemsCollection = collection(db,"ItemCollection");
+      getDocs(itemsCollection).then((snapshot)=>{
+       setProduct(snapshot.docs.map((doc)=>({id:doc.id,...doc.data()})))
+      });
+
     }, []);
 
     function getData(data,subtotal){

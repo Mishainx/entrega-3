@@ -8,14 +8,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 function Cart(){
     const {cartList,deleteItem,totalAmount} = useContext(CartContext)
-    
-    function hola(){
-        if(1+1==2){
-        }
-        console.log(cartList)
-    }
 
-    hola()
     return(
         <div>
             {cartList.length > 0 ?

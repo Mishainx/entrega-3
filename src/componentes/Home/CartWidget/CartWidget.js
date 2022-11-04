@@ -6,11 +6,6 @@ import '../CartWidget/CartWidget.scss'
 
 function CartWidget() {
   const {cartList,totalItems} = useContext(CartContext)
-  function hola(){
-    console.log(totalItems())
-  }
-  hola()
-
 
     return (
       <div className="CartWidget">
