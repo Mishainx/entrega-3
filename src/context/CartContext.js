@@ -6,7 +6,7 @@ const CartContextProvider = ({children}) => {
    const [cartList, setCartList] = useState([]);
 
    const addItem = (id,name,price,quantity,img,subtotal) =>{
-    if(isInCart(id) == true){
+    if(isInCart(id) === true){
       const newCart = cartList.map(i=>{
         if(i.id === id){
           return{...i, quantity: i.quantity+quantity}
@@ -24,7 +24,7 @@ const CartContextProvider = ({children}) => {
    const removeList = () =>{
    }
 
-   const deleteItem =(id) => setCartList(cartList.filter((product)=>product.id != id))
+   const deleteItem =(id) => setCartList(cartList.filter((product)=>product.id !== id))
 
    const isInCart = (id) => cartList.some(product => product.id === id);
 

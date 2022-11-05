@@ -2,12 +2,9 @@ import '../ItemDetailContainer/ItemDetailContainer.scss'
 import { useParams } from "react-router-dom";
 import Item from "../Item/Item";
 import { useState, useEffect, useContext } from "react";
-import {getProductById} from '../../../screens/Home/Products'
 import ItemCount from '../ItemCount/ItemCount';
 import { CartContext } from '../../../context/CartContext';
-import{collection,getDocs,getFirestore} from 'firebase/firestore';
-
-
+import{doc,getDoc, getFirestore} from 'firebase/firestore';
 
 function ItemDetailContainer(){
     const {id} = useParams();
@@ -16,14 +13,16 @@ function ItemDetailContainer(){
     const {addItem} = useContext(CartContext)
     
     useEffect(() => {
-      const db = getFirestore();
+      const db = getFirestore ()
 
-      const itemsCollection = collection(db,"ItemCollection");
-      getDocs(itemsCollection).then((snapshot)=>{
-       setProduct(snapshot.docs.map((doc)=>({id:doc.id,...doc.data()})))
+      const queryDoc = doc(db, "ItemCollection", id);
+      getDoc(queryDoc).then((snapshot)=>{
+        if(snapshot.exists()){
+          setProduct({id:snapshot.id,...snapshot.data()})
+        }
       });
+    }, [id]);
 
-    }, []);
 
     function getData(data,subtotal){
         setItemCount(data)

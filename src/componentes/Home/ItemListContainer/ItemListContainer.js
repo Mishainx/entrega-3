@@ -1,35 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { cloneElement, useEffect, useState } from 'react';
 import '../ItemListContainer/ItemListContainer.scss'
 import ItemList from '../ItemList/ItemList';
-import{collection,getDocs,getFirestore} from 'firebase/firestore';
+import{collection,getDocs,getFirestore,query,where} from 'firebase/firestore';
+import { useParams } from 'react-router-dom';
 
 const ItemListContainer = () => {
     const [productList, setProductList] = useState([]);
-    const [loading, setLoading] = useState(true);
-    console.log(productList)
+    const {category} = useParams()
 
     useEffect(() => {
       const db = getFirestore();
-
-      const itemsCollection = collection(db,"ItemCollection");
-      getDocs(itemsCollection).then((snapshot)=>{
-        if(snapshot.size===0){
-          console.log("No results")
-        }
-        setProductList(snapshot.docs.map((doc)=>({...doc.data()})))
-        console.log(snapshot.docs.map((doc)=>({...doc.data()})))
-        console.log(productList)
-      });
-    }, []);
+      const queryCollection = collection(db, 'ItemCollection');
+      if(category) {
+          const queryFilter = query(queryCollection, where('category', '==', category));
+          getDocs(queryFilter).then(res => setProductList(res.docs.map(product => ({id: product.id, ...product.data()}))))
+      } else {
+          getDocs(queryCollection).then(res => setProductList(res.docs.map(product => ({id: product.id, ...product.data()}))))
+      }
+  }, [category]);
   
     return (
       <div className="itemListContainer">
-        {loading ? (
-          <p>Cargando...</p>
-        ) : (
-          
-          <ItemList productList={productList}/>
-        )}
+        {<ItemList productList={productList}/>}
       </div>
     );
   };
