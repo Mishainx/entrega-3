@@ -3,20 +3,23 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { useContext} from 'react';
 import { CartContext } from '../../../context/CartContext';
 import '../CartWidget/CartWidget.scss'
+import { Link } from 'react-router-dom';
 
 function CartWidget() {
   const {cartList,totalItems} = useContext(CartContext)
 
     return (
+      <Link to="/cart">
       <div className="CartWidget">
         {cartList.length>0?
           <div>
           <FontAwesomeIcon className='fullCart' icon= {faCartShopping } size="lg"/>
           <p className='cartNumber'>{`${totalItems()}`}</p>
           </div>:
-          <div><FontAwesomeIcon className='fullCart' icon= {faCartShopping } size="lg"/></div>
+          <div><FontAwesomeIcon className='empty' icon= {faCartShopping } size="lg"/></div>
         }
       </div>
+      </Link>
     );
   }
 

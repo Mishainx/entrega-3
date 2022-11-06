@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../../../context/CartContext';
 import { useParams } from 'react-router-dom';
 
-function ItemCount({stock,initial,getData}) {
+function ItemCount({stock,initial,getData,getItemCountLive}) {
     const [count, setCount] = useState(0);
     const {cartList, isInCart} = useContext(CartContext)
     const {id} = useParams();
@@ -13,17 +13,20 @@ function ItemCount({stock,initial,getData}) {
         {initial ? setCount(initial) : setCount(0)}},[])
 
     function clickCount (){
-        if(!isInCart(parseInt(id)) && count <stock){
+        if(!isInCart(id) && count <stock){
             setCount(count+1)
-
+            getItemCountLive(count  )
+            
         }
         else{
-            const cartCount = cartList.find((product) => product.id === parseInt(id)).quantity
+            const cartCount = cartList.find((product) => product.id == parseInt(id)).quantity
             if(stock-cartCount-count>0 ){
                 setCount(count+1)
+                getItemCountLive(count)      
             }
         }
     }
+
 
 
     function clickRest(){
@@ -48,7 +51,7 @@ function ItemCount({stock,initial,getData}) {
             </button> 
         </div>
         <div>
-            <Link onClick={()=>getData(count)} to="/cart"><button onClick={()=>setCount(0)} className='BuyButton'> Comprar</button></Link>
+            <Link onClick={()=>getData(count)}><button onClick={()=>setCount(0)} className='BuyButton'> Agregar al carrito</button></Link>
         </div>        
     </div>
     )

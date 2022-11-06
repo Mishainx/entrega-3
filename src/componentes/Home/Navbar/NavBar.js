@@ -2,7 +2,8 @@ import CategoryButton from "../CategoryButton/CategoryButton";
 import logo from '../../../assets/img/logo.png';
 import '../Navbar/NavBar.scss'
 import CartWidget from "../CartWidget/CartWidget";
-import {Link} from "react-router-dom"
+import {Link, NavLink} from "react-router-dom"
+
 
 function NavBar() {
     const tableros = "Tableros"
