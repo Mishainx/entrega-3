@@ -51,7 +51,7 @@ function ItemCount({stock,initial,getData,getItemCountLive}) {
             </button> 
         </div>
         <div>
-            <Link onClick={()=>getData(count)}><button onClick={()=>setCount(0)} className='BuyButton'> Agregar al carrito</button></Link>
+            <Link onClick={()=>getData(count)}><button onClick={()=>setCount(0) } className='BuyButton'> Agregar al carrito</button></Link>
         </div>        
     </div>
     )

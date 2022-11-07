@@ -7,15 +7,19 @@ import ItemCount from '../ItemCount/ItemCount';
 import { CartContext } from '../../../context/CartContext';
 import{doc,getDoc, getFirestore} from 'firebase/firestore';
 import StockCounter from '../StockCounter/StockCounter'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function ItemDetailContainer(){
     const {id} = useParams();
     const [product, setProduct] = useState({});
     const [itemCount,setItemCount] = useState()
-    const {addItem,isInCart} = useContext(CartContext)
+    const {addItem} = useContext(CartContext)
     const [addedToCart, setAddedToCart] = useState(false)
     const [itemCountLive,setItemCountLive] = useState (0)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] =useState(true)
+    const notify = () => toast("Wow so easy!");
     
     useEffect(() => {
       const db = getFirestore ()
@@ -25,6 +29,7 @@ function ItemDetailContainer(){
         if(snapshot.exists()){
           setProduct({id:snapshot.id,...snapshot.data()})
         }
+      getDoc(queryDoc).finally((setLoading(false)))
       });
     }, [id]);
 
@@ -32,6 +37,7 @@ function ItemDetailContainer(){
     function getData(data,subtotal){
         setItemCount(data)
         setAddedToCart(true)
+        notify()
       if(data>0){
         addItem(product.id,product.name,product.price,data,product.img,subtotal)}
     }
@@ -44,20 +50,27 @@ function ItemDetailContainer(){
 
     return (
       <div className="ItemDetailContainer">  
-        <div className="ItemDetailContainer2">
+        {loading ?
+        <></>
+          :
+          <div className="ItemDetailContainer2">
           <Item 
-            name={product.name}
-            img={product.img}
-            price={product.price}
-            id={product.id}
-            stock={product.stock}
-            category={product.category}
-            description={product.description} 
-          />
-          <StockCounter stock={product.stock}/>
-          {!addedToCart ? <ItemCount getData={getData} stock={product.stock} getItemCountLive={getItemCountLive}/> : <CheckButton/>}
+          name={product.name}
+          img={product.img}
+          price={product.price}
+          id={product.id}
+          stock={product.stock}
+          category={product.category}
+          description={product.description} 
+        />
+        <StockCounter stock={product.stock}/>
+        {!addedToCart ? <ItemCount getData={getData} stock={product.stock} getItemCountLive={getItemCountLive}/> : <CheckButton/>}
+        <ToastContainer />
         </div>
-      </div>
+          
+          }
+
+        </div>
  );
   };
 export default ItemDetailContainer;
