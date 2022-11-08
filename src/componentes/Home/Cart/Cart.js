@@ -4,6 +4,7 @@ import '../Cart/Cart.scss'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import {Form} from '../Form/Form'
 
 
 function Cart(){
@@ -12,7 +13,7 @@ function Cart(){
     return(
         <div>
             {cartList.length > 0 ?
-            <div>{cartList.map((product,i)=>
+            <div className='ItemListContainer'>{cartList.map((product,i)=>
             <div key={i} className="ItemList">
                 <img src={`${product.img}`}/>
                 <h2>{`${product.name}`}</h2>
@@ -24,6 +25,8 @@ function Cart(){
             
             )}
             <p className='cartTotal'>Su total es {`${totalAmount()}`}</p>
+            <button>Comprar</button>
+            <Form/>
             </div>
             
 

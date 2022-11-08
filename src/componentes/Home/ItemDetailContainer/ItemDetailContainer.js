@@ -19,7 +19,16 @@ function ItemDetailContainer(){
     const [addedToCart, setAddedToCart] = useState(false)
     const [itemCountLive,setItemCountLive] = useState (0)
     const [loading, setLoading] =useState(true)
-    const notify = () => toast("Wow so easy!");
+    const notify = () => toast.success("Producto agregado",{
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
     
     useEffect(() => {
       const db = getFirestore ()
@@ -65,7 +74,7 @@ function ItemDetailContainer(){
         />
         <StockCounter stock={product.stock}/>
         {!addedToCart ? <ItemCount getData={getData} stock={product.stock} getItemCountLive={getItemCountLive}/> : <CheckButton/>}
-        <ToastContainer />
+        <ToastContainer/>
         </div>
           
           }
