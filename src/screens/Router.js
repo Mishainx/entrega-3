@@ -5,10 +5,12 @@ import ItemDetailContainer from '../componentes/Home/ItemDetailContainer/ItemDet
 import Cart from '../componentes/Home/Cart/Cart';
 import CartContextProvider from '../context/CartContext';
 
+
+//Se utiliza el Context Provider en el Router para poder distribuir sus datos y funciones en toda la página
 const Router = ()=>{
     return(
         <BrowserRouter>
-        <CartContextProvider>//Se utiliza el Context Provider en el Router para poder distribuir sus datos y funciones en toda la página
+        <CartContextProvider>
             <Home/>
             <Routes>
                 <Route path="/" element={<ItemListContainer/>}></Route>
