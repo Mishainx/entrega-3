@@ -16,6 +16,7 @@ export function Form(){
   const [email,setEmail] = useState("")
   const [emailCheck,setEmailCheck] = useState("")
   const [telephone,setTelephone] = useState("")
+  const [clearCart,setClearCart] = useState(false)
 
   
     const sendOrder=()=>{
@@ -28,10 +29,14 @@ export function Form(){
       const db = getFirestore();
       const ordersCollection = collection(db, "ordersCollection");
 
-      addDoc(ordersCollection, order).then(({id})=>Swal.fire({ title: 'Compra realizada con éxito',
+      addDoc(ordersCollection, order)
+      .then(({id})=>Swal.fire({ title: 'Compra realizada con éxito',
       html: `El código de su orden es ${id}`,
       icon: 'success',
-      confirmButtonText: 'Ok'}));
+      confirmButtonText: 'Ok'}))
+      .then(()=>removeList())
+      ;
+
 
       cartList.map(async (item) => {
         const itemRef = doc(db, "ItemCollection", item.id);
@@ -40,7 +45,7 @@ export function Form(){
         });
 
       })
-      removeList()
+
     }
     else{
       alert("Ingrese sus datos correctamente")

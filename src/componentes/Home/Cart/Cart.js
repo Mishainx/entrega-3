@@ -50,7 +50,7 @@ function Cart(){
 
         :
             <div className='emptyCart'>
-                <p>Aún no ha agregado items a su carrito</p>
+                <p>Carrito vacío</p>
                 <Link to="/"><button>Seguir comprando</button></Link>
             </div>
         }
