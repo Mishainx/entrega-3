@@ -4,9 +4,6 @@ import { useContext, useState, useEffect } from 'react'
 import { CartContext } from '../../../context/CartContext'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
-import { Link } from 'react-router-dom'
-
-
 
 export function Form(){
 
@@ -16,9 +13,9 @@ export function Form(){
   const [email,setEmail] = useState("")
   const [emailCheck,setEmailCheck] = useState("")
   const [telephone,setTelephone] = useState("")
-  const [clearCart,setClearCart] = useState(false)
-
   
+  
+  /*Formulario de contacto, al ser completado envía la orden a Firestore y limpia el carrito*/
     const sendOrder=()=>{
     if(email == emailCheck && email != "" && name !="" && telephone != ""){
       const order = {
@@ -30,14 +27,16 @@ export function Form(){
       const ordersCollection = collection(db, "ordersCollection");
 
       addDoc(ordersCollection, order)
+      //Mensaje de compra realizada en forma satisfactoria
       .then(({id})=>Swal.fire({ title: 'Compra realizada con éxito',
       html: `El código de su orden es ${id}`,
       icon: 'success',
       confirmButtonText: 'Ok'}))
+      //Vaciado de carrito
       .then(()=>removeList())
       ;
 
-
+      /*Actualización de stock*/
       cartList.map(async (item) => {
         const itemRef = doc(db, "ItemCollection", item.id);
         await updateDoc(itemRef, {
@@ -48,7 +47,7 @@ export function Form(){
 
     }
     else{
-      alert("Ingrese sus datos correctamente")
+      alert("Ingrese sus datos correctamente")//Mensaje en caso de que el formulario no sea completado correctamente
     }
     }
 

@@ -5,6 +5,7 @@ import Router from './screens/Router';
 import reportWebVitals from './reportWebVitals';
 import { initializeApp } from "firebase/app";
 
+//Configuración FirseBase y Firestore
 const firebaseConfig = {
   apiKey: "AIzaSyBByoQpGx4Y9ZfK0GQkNuiKidy3nenPxgU",
   authDomain: "e-commerce-8037b.firebaseapp.com",

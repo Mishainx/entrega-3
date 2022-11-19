@@ -1,5 +1,14 @@
 import {createContext, useState} from "react";
 
+/*CartContext posee un Provider encargado de diseminar por la APP los siguientes datos y funciones:
+-AddItem: Se encarga de adicionar un item al carrito y realiza un check para evitar duplicaciones
+-RemoveList: Se encarga de vaciar el carrito
+-DeleteItem: Se encarga de eliminar un item
+-IsinCart: comprueba la existencia de un item en el carrito
+-TotalItems: permite determinar la cantidad seleccionada de un producto para determinar el subtotal
+-TotalAmout: establece el precio total de la compra
+*/
+
 export const CartContext = createContext();
 
 const CartContextProvider = ({children}) => {

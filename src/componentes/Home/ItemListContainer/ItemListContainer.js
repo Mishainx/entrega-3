@@ -5,18 +5,18 @@ import{collection,getDocs,getFirestore,query,where} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import BounceLoader from "react-spinners/ClipLoader";
 
+//Propiedades pertenecientes al spinner
 const override = {
   display: "block",
   margin: "auto"
 };
 
-
-
+//Inicio componente ItemListContainer
 const ItemListContainer = () => {
     const [productList, setProductList] = useState([]);
     const {category} = useParams()
     const [loading,setLoading] = useState (true)
-
+//A través de useParams se detecta si el usuario se encuentra en el home o ha seleccionado alguna categoría, renderizando en su caso los items correspondientes
     useEffect(() => {
       const db = getFirestore();
       const queryCollection = collection(db, 'ItemCollection');

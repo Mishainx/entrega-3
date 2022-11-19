@@ -11,13 +11,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import BounceLoader from "react-spinners/ClipLoader";
 import 'react-toastify/dist/ReactToastify.css';
 
+//Propiedades del spinner
 const override = {
 display: "block",
 margin: "auto"
 };
 
-
-
+//Componente ItemDetailContainer encargado de mostrar el producto con sus detalles
 function ItemDetailContainer(){
     const {id} = useParams();
     const [product, setProduct] = useState({});
@@ -26,6 +26,8 @@ function ItemDetailContainer(){
     const [addedToCart, setAddedToCart] = useState(false)
     const [itemCountLive,setItemCountLive] = useState (0)
     const [loading, setLoading] =useState(true)
+
+    //Valores de la notificación toastify para cuando un producto es agregado al carrito.
     const notify = () => toast.success("Producto agregado",{
       position: "bottom-left",
       autoClose: 1000,
@@ -36,7 +38,8 @@ function ItemDetailContainer(){
       progress: undefined,
       theme: "dark",
     });
-    
+   
+  //A través de useParams se detecta la id del producto seleccionado y se busca la información del mismo en firestore para su renderizado
     useEffect(() => {
       const db = getFirestore ()
 
@@ -49,7 +52,7 @@ function ItemDetailContainer(){
       });
     }, [id]);
 
-
+//La función getData permite extraer del contador la cantidad seleccionado y concretar la adición del producto al carrito.
     function getData(data,subtotal){
         setItemCount(data)
         setAddedToCart(true)

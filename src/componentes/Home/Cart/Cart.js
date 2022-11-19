@@ -7,6 +7,8 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import {Form} from '../Form/Form'
 
 
+/*Renderizado de productos del cart + formulario*/
+
 function Cart(){
     const {cartList,deleteItem,totalAmount} = useContext(CartContext)
     

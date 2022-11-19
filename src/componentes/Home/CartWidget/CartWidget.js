@@ -5,6 +5,8 @@ import { CartContext } from '../../../context/CartContext';
 import '../CartWidget/CartWidget.scss'
 import { Link } from 'react-router-dom';
 
+
+//Al detectar la existencia de productos en el carrito el cartWidget se renderiza
 function CartWidget() {
   const {cartList,totalItems} = useContext(CartContext)
 

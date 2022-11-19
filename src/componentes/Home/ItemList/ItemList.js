@@ -2,6 +2,8 @@ import Item from "../Item/Item";
 import "../ItemList/ItemList.scss"
 import { Link } from "react-router-dom";
 
+
+//Componente ItemList encargado de renderizar los items con sus props
 function ItemList({productList}) {
     return( 
     <div className="ItemList">

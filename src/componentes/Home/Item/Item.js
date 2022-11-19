@@ -1,5 +1,7 @@
 import "./Item.scss";
 
+
+//Componente Item con sus props
 const Item = ({name,description,img,price,category,id,stock}) => {
   return (
     <div className="Item"> 

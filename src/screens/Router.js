@@ -8,7 +8,7 @@ import CartContextProvider from '../context/CartContext';
 const Router = ()=>{
     return(
         <BrowserRouter>
-        <CartContextProvider>
+        <CartContextProvider>//Se utiliza el Context Provider en el Router para poder distribuir sus datos y funciones en toda la página
             <Home/>
             <Routes>
                 <Route path="/" element={<ItemListContainer/>}></Route>
