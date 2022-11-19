@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import '../CheckButton/CheckButton.scss'
 
 function CheckButton() {
     return( 

@@ -1,9 +1,7 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.CheckButton {
+  margin-bottom: 20px;
 }
-.form button {
+.CheckButton button {
   box-shadow: 0px 10px 11px -7px #276873;
   background: linear-gradient(125deg, rgb(30, 67, 86) 0%, rgb(24, 114, 161) 97%);
   border-radius: 5px;
@@ -13,11 +11,12 @@
   font-family: "myriad";
   font-size: 20px;
   font-weight: bold;
-  padding: 10px 15px;
+  padding: 13px 32px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #3d768a;
-  margin: auto;
+  margin: 0 10px;
+  margin-bottom: 20px;
 }
-.form button:hover {
+.CheckButton button:hover {
   background: linear-gradient(125deg, rgb(67, 118, 143) 0%, rgb(24, 114, 161) 97%);
-}/*# sourceMappingURL=Form.css.map */
+}/*# sourceMappingURL=CheckButton.css.map */
