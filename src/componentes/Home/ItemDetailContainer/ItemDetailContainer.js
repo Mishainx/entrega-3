@@ -72,8 +72,8 @@ function ItemDetailContainer(){
         </div>
           :
           <div className="ItemDetailContainer2">
-          <div>
-            <Item 
+
+          <Item 
           img={product.img}
           name={product.name}
           price={product.price}
@@ -82,9 +82,9 @@ function ItemDetailContainer(){
           category={product.category}
           description={product.description} 
         />
+    
         <StockCounter stock={product.stock}/>
         {!addedToCart ? <ItemCount getData={getData} stock={product.stock} getItemCountLive={getItemCountLive}/> : <CheckButton/>}
-          </div>
           
         <ToastContainer/>
         </div>
