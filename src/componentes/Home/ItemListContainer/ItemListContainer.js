@@ -6,7 +6,8 @@ import { useParams } from 'react-router-dom';
 import BounceLoader from "react-spinners/ClipLoader";
 
 const override = {
-  margin: "300px 1000px",
+  display: "block",
+  margin: "auto"
 };
 
 

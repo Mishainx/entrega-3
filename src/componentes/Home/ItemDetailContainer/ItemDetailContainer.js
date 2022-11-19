@@ -12,7 +12,8 @@ import BounceLoader from "react-spinners/ClipLoader";
 import 'react-toastify/dist/ReactToastify.css';
 
 const override = {
-  margin: "300px",
+display: "block",
+margin: "auto"
 };
 
 
