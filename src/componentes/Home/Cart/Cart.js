@@ -1,4 +1,4 @@
-import { useContext} from 'react';
+import { useContext, useEffect} from 'react';
 import { CartContext } from '../../../context/CartContext';
 import '../Cart/Cart.scss'
 import { Link } from 'react-router-dom';
@@ -9,7 +9,7 @@ import {Form} from '../Form/Form'
 
 function Cart(){
     const {cartList,deleteItem,totalAmount} = useContext(CartContext)
-
+    
     return(
         <div>
             {cartList.length > 0 ?

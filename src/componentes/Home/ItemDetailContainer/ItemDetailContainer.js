@@ -2,13 +2,19 @@ import '../ItemDetailContainer/ItemDetailContainer.scss'
 import { useParams } from "react-router-dom";
 import Item from "../Item/Item";
 import CheckButton from '../CheckButton/CheckButton'
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext} from "react";
 import ItemCount from '../ItemCount/ItemCount';
 import { CartContext } from '../../../context/CartContext';
 import{doc,getDoc, getFirestore} from 'firebase/firestore';
 import StockCounter from '../StockCounter/StockCounter'
 import { ToastContainer, toast } from 'react-toastify';
+import BounceLoader from "react-spinners/ClipLoader";
 import 'react-toastify/dist/ReactToastify.css';
+
+const override = {
+  margin: "300px",
+};
+
 
 
 function ItemDetailContainer(){
@@ -60,7 +66,9 @@ function ItemDetailContainer(){
     return (
       <div className="ItemDetailContainer">  
         {loading ?
-        <></>
+        <div className="Spinner">
+        <BounceLoader color="#36d7b7"   size={88} cssOverride={override}/>
+        </div>
           :
           <div className="ItemDetailContainer2">
           <div>
