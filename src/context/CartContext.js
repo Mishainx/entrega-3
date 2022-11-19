@@ -21,8 +21,7 @@ const CartContextProvider = ({children}) => {
     }
    }
 
-   const removeList = () =>{
-   }
+   const removeList = () => setCartList([])
 
    const deleteItem =(id) => setCartList(cartList.filter((product)=>product.id !== id))
 

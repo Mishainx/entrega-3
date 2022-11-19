@@ -9,7 +9,7 @@ import 'sweetalert2/src/sweetalert2.scss'
 
 export function Form(){
 
-  const {cartList,totalAmount} = useContext(CartContext)
+  const {cartList,totalAmount,remo} = useContext(CartContext)
   const buyDate = new Date()
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
@@ -57,7 +57,7 @@ export function Form(){
             <input type={'email'} placeholder={"E-mail"} name="email" value={email} onChange={e=>setEmail(e.target.value)}></input>
             <input type={'email'} placeholder={"Confirme su e-mail"} name="emailCheck" value={emailCheck} onChange={e=>setEmailCheck(e.target.value)}></input>
             <input type={'tel'} placeholder={"Teléfono"} name="telephone" value={telephone} onChange={e=>setTelephone(e.target.value)}></input>
-            <button onClick={()=>sendOrder()}>Enviar</button>
+            <button onClick={()=>sendOrder()}>Comprar</button>
             
 
             </div>

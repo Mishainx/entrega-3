@@ -20,8 +20,9 @@ const ItemListContainer = () => {
   }, [category]);
   
     return (
-      <div className="itemListContainer">              
-        {<ItemList productList={productList}/>}
+      <div className="itemListContainer">
+        {category?<h2 className='categoryTitle'>{category.toLocaleUpperCase()}</h2>:""}
+          <ItemList productList={productList}/>
       </div>
     );
   };

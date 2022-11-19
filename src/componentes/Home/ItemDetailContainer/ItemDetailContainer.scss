@@ -7,12 +7,10 @@
 
 .ItemDetailContainer2{
     display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 40px;
-    flex-direction: column;
     box-shadow: rgba(4, 82, 94, 0.16) 0px 3px 6px, rgba(1, 55, 72, 0.23) 0px 3px 6px;
-    width: 25%;
+    text-align: center;
+
 
     .Item{
         box-shadow: none;
@@ -41,4 +39,8 @@
         background: linear-gradient(125deg, rgb(67, 118, 143) 0%, rgb(24, 114, 161) 97%);
         }
       }
+}
+
+.categoryTitle{
+    text-align: center;
 }
