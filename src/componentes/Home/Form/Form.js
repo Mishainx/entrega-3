@@ -13,55 +13,41 @@ export function Form(){
   const buyDate = new Date()
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
+  const [emailCheck,setEmailCheck] = useState("")
   const [telephone,setTelephone] = useState("")
 
 
     const sendOrder=()=>{
+    if(email == emailCheck){
       const order = {
         buyer:{name:`${name}`,phone:`${telephone}`, email:`${email}`},
         buyList: {...cartList,date:`${buyDate}`, total:totalAmount()}
       };
 
-      const lala = cartList.forEach((item)=> {
-        return(item.id,item.quantity)})
-
-
       const db = getFirestore();
       const ordersCollection = collection(db, "ordersCollection");
 
       addDoc(ordersCollection, order).then(({id})=>Swal.fire({ title: 'Compra realizada con éxito',
-      html: `Su número de orden es ${id}`,
+      html: `El código de su orden es ${id}`,
       icon: 'success',
       confirmButtonText: 'Ok'}));
-
-      
-    /*  const updateItemCollection = () =>{
-
-        const db = getFirestore();
-        
-        const batch = writeBatch(db)
-        const stockUpdate1 = doc(db,"ItemCollection","1")
-
-        batch.update(stockUpdate1, {stock: 10});
-        
-        batch.commit();
-        tutu()
-
-      }
-
-      updateItemCollection()*/
 
       cartList.map(async (item) => {
         const itemRef = doc(db, "ItemCollection", item.id);
         await updateDoc(itemRef, {
-          // Utilizamos la función propia de firestore increment para actualizar la cantidad de stock
-          stock: increment(-item.quantity)
+        stock: increment(-item.quantity)
         });
       })
     }
+    else{
+      alert("La dirección de correo electrónico no coincide")
+    }
+    }
+
+      
 
 
-    const tutu=(e)=> e.preventDefault()
+    const prevForm=(e)=> e.preventDefault()
 
     return(
         <div>
@@ -69,6 +55,7 @@ export function Form(){
             <div className='form'>
             <input type={'text'} placeholder={"Nombre y Apellido"} name="name" value={name} onChange={e=>setName(e.target.value)}></input>
             <input type={'email'} placeholder={"E-mail"} name="email" value={email} onChange={e=>setEmail(e.target.value)}></input>
+            <input type={'email'} placeholder={"Confirme su e-mail"} name="emailCheck" value={emailCheck} onChange={e=>setEmailCheck(e.target.value)}></input>
             <input type={'tel'} placeholder={"Teléfono"} name="telephone" value={telephone} onChange={e=>setTelephone(e.target.value)}></input>
             <button onClick={()=>sendOrder()}>Enviar</button>
             

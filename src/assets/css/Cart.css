@@ -1,21 +1,27 @@
-.ItemListContainer {
+.cartListContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 50px;
 }
-.ItemListContainer button {
+.cartListContainer button {
   width: 90px;
 }
 
-.ItemList {
+.cartList {
   display: flex;
-  padding-top: 0;
-  margin: 0;
+  flex-direction: column;
+  width: 1000px;
+  gap: 20px;
+  box-shadow: rgba(4, 82, 94, 0.16) 0px 3px 6px, rgba(1, 55, 72, 0.23) 0px 3px 6px;
 }
-.ItemList img {
+.cartList h2 {
+  text-align: center;
+}
+.cartList img {
   width: 50px;
 }
-.ItemList .trash {
+.cartList .trash {
   cursor: pointer;
 }
 
@@ -26,5 +32,14 @@
 }
 
 .cartTotal {
+  text-align: center;
+}
+
+.cartTitles, .cartItem {
+  display: flex;
+  justify-content: space-around;
+}
+.cartTitles td, .cartItem td {
+  width: 30px;
   text-align: center;
 }/*# sourceMappingURL=Cart.css.map */
