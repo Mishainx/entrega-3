@@ -54,6 +54,7 @@
 
 .cartTotal {
   text-align: center;
+  font-weight: bold;
 }
 
 .cartTitles, .cartItem {
